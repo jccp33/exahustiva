@@ -1,5 +1,20 @@
 import os
+import sys
 
+# ---------- obtener nombre sistema ---------- #
+def get_platform():
+    platforms = {
+        'linux1' : 'Linux',
+        'linux2' : 'Linux',
+        'darwin' : 'OS X',
+        'win32' : 'Windows'
+    }
+    if sys.platform not in platforms:
+        return sys.platform
+    return platforms[sys.platform]
+# ---------- obtener nombre sistema ---------- #
+
+# ----------- funciones de ejemplo ----------- #
 # funcion silla
 # (x-5)*(x-5)*(x-5) + 1
 
@@ -8,15 +23,28 @@ import os
 
 # funcion con dos minimos
 # (x-2)*(x-2)*(x-5)*(x-5)+1
+# ----------- funciones de ejemplo ----------- #
 
+# ------------ funcion a minimizar ----------- #
 func_str = "(x-5)*(x-5) + 1"
 def funcion(x):
     return (x-5)*(x-5) + 1
+# ------------ funcion a minimizar ----------- #
 
-os.system("clear")
-a = input("a: ")
-b = input("b: ")
-e = input("e: ")
+# ------------- limpiar pantalla ------------- #
+if get_platform() == "Windows":
+    os.system("cls")
+if get_platform() == "Linux":
+    os.system("clear")
+# ------------- limpiar pantalla ------------- #
+
+
+
+
+# ----------- ejecucion principal ------------ #
+a = float(input("a: "))
+b = float(input("b: "))
+e = float(input("e: "))
 
 n  = 2 * (b - a) / e
 dx = (b - a) / n
@@ -24,7 +52,7 @@ x1 = a
 x2 = x1 + dx
 x3 = x2 + dx
 
-file = open("graf.dat","w")
+file = open("graf.plt","w")
 file.write("set xrange [" + str(a) + ":" + str(b) + "]\n");
 file.write("set yrange [0:10]\n");
 
@@ -55,3 +83,5 @@ file.write("\npause -1\n")
 file.close()
 
 os.system("gnuplot \"graf.dat\"")
+# ----------- ejecucion principal ------------ #
+
