@@ -52,7 +52,7 @@ x1 = a
 x2 = x1 + dx
 x3 = x2 + dx
 
-file = open("graf.plt","w")
+file = open("graf.dat","w")
 file.write("set xrange [" + str(a) + ":" + str(b) + "]\n");
 file.write("set yrange [0:10]\n");
 
